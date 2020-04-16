@@ -40,13 +40,13 @@ ENV HYPRE_DIR=/hypre
 ENV PARFLOW_DIR=/parflow
 
 # Install hypre
-RUN wget -q https://github.com/hypre-space/hypre/archive/v2.17.0.tar.gz && \
-    tar xf v2.17.0.tar.gz && \
-    cd hypre-2.17.0/src && \
+RUN wget -q https://github.com/hypre-space/hypre/archive/v2.18.2.tar.gz && \
+    tar xf v2.18.2.tar.gz && \
+    cd hypre-2.18.2/src && \
     ./configure --prefix=/hypre --with-MPI && \
     make install && \
     cd / && \
-    rm -fr hypre-2.17.0 v2.17.0.tar.gz
+    rm -fr hypre-2.18.2 v2.18.2.tar.gz
 
 # Intall parflow
 RUN git clone -b master --single-branch https://github.com/parflow/parflow.git /parflow-tmp

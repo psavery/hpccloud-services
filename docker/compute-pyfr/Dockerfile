@@ -1,11 +1,11 @@
-# Docker file for compute PyFR 1.8.0
+# Docker file for compute PyFR 1.9.0
 
 ARG BASE_IMAGE=kitware/hpccloud:sge-ssh
 
 FROM ${BASE_IMAGE}
 LABEL maintainer="patrick.oleary@kitware.com" \
       version="1.0" \
-      pyfr.version="1.8.0"
+      pyfr.version="1.9.0"
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -36,8 +36,8 @@ RUN pip3 install appdirs \
                  mpi4py \
                  h5py
 
-# Install PyFR 1.8.0
-RUN wget -q -O PyFR-1.8.0.zip https://github.com/PyFR/PyFR/archive/v1.8.0.zip && \
-    unzip -qq PyFR-1.8.0.zip && \
-    cd PyFR-1.8.0 && \
+# Install PyFR 1.9.0
+RUN wget -q -O PyFR-1.9.0.zip https://github.com/PyFR/PyFR/archive/v1.9.0.zip && \
+    unzip -qq PyFR-1.9.0.zip && \
+    cd PyFR-1.9.0 && \
     python3 setup.py install

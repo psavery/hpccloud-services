@@ -1,10 +1,10 @@
-# Docker file for visualize EGL ParaView 5.6.0
+# Docker file for visualize EGL ParaView 5.8.0
 #
 # Build options
 #
 #   PARAVIEW_TAG
 #
-#     "master", "v5.6.0", <branch-name>, etc...
+#     "master", "v5.8.0", <branch-name>, etc...
 #
 #   SUPERBUILD_REPO
 #
@@ -12,17 +12,17 @@
 #
 #   SUPERBUILD_TAG
 #
-#     "master", "v5.6.0", <branch-name>, etc...
+#     "master", "v5.8.0", <branch-name>, etc...
 #
 
 FROM kitware/hpccloud:nvidia-sge-ssh
 
 LABEL maintainer="patrick.oleary@kitware.com" \
       version="1.0" \
-      ParaView.version="5.6.0"
+      ParaView.version="5.8.0"
 
-ARG PARAVIEW_TAG=v5.7.0-RC1
-ARG SUPERBUILD_TAG=v5.7.0-RC1
+ARG PARAVIEW_TAG=v5.8.0
+ARG SUPERBUILD_TAG=v5.8.0
 ARG SUPERBUILD_REPO=https://gitlab.kitware.com/paraview/paraview-superbuild.git
 
 RUN apt-get update && apt-get install -y --no-install-recommends \

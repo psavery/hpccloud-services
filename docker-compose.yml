@@ -4,7 +4,7 @@
 version: '2.3'
 services:
   mongodb:
-    image: mongo:3.6
+    image: mongo:4.2
     networks:
       - hc
     volumes:
