@@ -1,4 +1,4 @@
-FROM girder/girder:latest-py3
+FROM girder/girder:latest
 LABEL maintainer="patrick.oleary@kitware.com" \
       version="1.0"
 
