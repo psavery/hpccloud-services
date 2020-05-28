@@ -1,22 +1,16 @@
 # Docker file for Parflow
 
-ARG BASE_IMAGE=ubuntu:18.04
+ARG BASE_IMAGE=ubuntu:20.04
 
 FROM ${BASE_IMAGE} as build
-LABEL maintainer="patrick.avery@kitware.com" \
-      version="1.0" \
-      parflow.version="master"
-
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive \
     apt-get install -y --no-install-recommends \
         git \
         wget \
         ca-certificates \
-        gcc-6 \
-        g++-6 \
-        g++-6-multilib \
-        gfortran-6 \
+        build-essential \
+        gfortran \
         libopenblas-dev \
         liblapack-dev \
         libopenmpi-dev \
@@ -24,9 +18,6 @@ RUN apt-get update && \
         tcl-dev \
         tk-dev \
         cmake && \
-    update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 60 \
-                        --slave /usr/bin/g++ g++ /usr/bin/g++-6 \
-                        --slave /usr/bin/gfortran gfortran /usr/bin/gfortran-6 && \
     rm -rf /var/lib/apt/lists/*
 
 # ParFlow environment variables
@@ -72,7 +63,7 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive \
     apt-get install -y --no-install-recommends \
         openmpi-bin \
-        libgfortran-6-dev \
+        libgfortran-9-dev \
         openssh-server \
         tcl && \
     rm -rf /var/lib/apt/lists/*
