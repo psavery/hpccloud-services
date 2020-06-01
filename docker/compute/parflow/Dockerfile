@@ -68,12 +68,14 @@ RUN apt-get update && \
         tcl && \
     rm -rf /var/lib/apt/lists/*
 
-# FIXME: when we update to a new enough version of openmpi, use the
-# environment variables below instead of --allow-run-as-root argument.
-# Allow root to mpiexec (not in current openmpi version for Ubuntu 18.04)
-#ENV OMPI_ALLOW_RUN_AS_ROOT=1
-#ENV OMPI_ALLOW_RUN_AS_ROOT_CONFIRM=1
+ENV PARFLOW_MPIEXEC_EXTRA_FLAGS "--mca mpi_yield_when_idle 1 --oversubscribe"
 
-ENV PARFLOW_MPIEXEC_EXTRA_FLAGS "--mca mpi_yield_when_idle 1 --oversubscribe --allow-run-as-root"
+# Run as a non-root user
+RUN useradd -m -U -s /bin/bash user
+
+# Allow the user to run in the scratch directory
+RUN mkdir /scratch && chown -R user:user /scratch
+
+USER user
 
 ENTRYPOINT ["tclsh"]
