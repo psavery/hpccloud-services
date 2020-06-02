@@ -71,11 +71,11 @@ RUN apt-get update && \
 ENV PARFLOW_MPIEXEC_EXTRA_FLAGS "--mca mpi_yield_when_idle 1 --oversubscribe"
 
 # Run as a non-root user
-RUN useradd -m -U -s /bin/bash user
+RUN useradd -m -U -s /bin/bash ubuntu
 
 # Allow the user to run in the scratch directory
-RUN mkdir /scratch && chown -R user:user /scratch
+RUN mkdir /scratch && chown -R ubuntu:ubuntu /scratch
 
-USER user
+USER ubuntu
 
 ENTRYPOINT ["tclsh"]
