@@ -71,7 +71,8 @@ RUN apt-get update && \
 ENV PARFLOW_MPIEXEC_EXTRA_FLAGS "--mca mpi_yield_when_idle 1 --oversubscribe"
 
 # Run as a non-root user
-RUN useradd -m -U -s /bin/bash ubuntu
+RUN groupadd -g 1000 ubuntu && \
+    useradd -u 1000 -g ubuntu -m -N -s /bin/bash ubuntu
 
 # Allow the user to run in the scratch directory
 RUN mkdir /scratch && chown -R ubuntu:ubuntu /scratch
