@@ -114,6 +114,7 @@ services:
       context: .
       dockerfile: docker/compute-pyfr/Dockerfile
     hostname: compute
+    privileged: true
     volumes:
      - scratch.hc:/scratch
      - /var/run/docker.sock:/var/run/docker.sock:rw
@@ -128,6 +129,7 @@ services:
       context: .
       dockerfile: docker/visualize-osmesa/Dockerfile
     hostname: visualize
+    privileged: true
     volumes:
      - scratch.hc:/scratch
     networks:

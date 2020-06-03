@@ -13,6 +13,7 @@ services:
         - BASE_IMG=kitware/hpccloud:nvidia-slurm-ssh
     hostname: compute
     runtime: nvidia
+    privileged: true
     volumes:
      - scratch.hc:/scratch
     networks:
@@ -30,6 +31,7 @@ services:
         - SUPERBUILD_TAG=v5.6.1
     hostname: visualize
     runtime: nvidia
+    privileged: true
     volumes:
      - scratch.hc:/scratch
     networks:
